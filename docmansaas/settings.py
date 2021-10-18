@@ -26,7 +26,7 @@ AUTH_USER_MODEL = 'docmanag.User'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY =os.environ['SECRET_KEY']
-DEBUG=True
+DEBUG =os.environ['DEBUG']
 
 ALLOWED_HOSTS = ['omdedras.herokuapp.com']
 
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'docmansaas.urls'
@@ -149,5 +150,10 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dafc.dedras@gmail.com'
 EMAIL_HOST_PASSWORD = 'gsadbllkgzxsckkf'
+
+
+import dj_database_url 
+db_from_env = dj_database_url.config(conn_max_age=500) 
+DATABASES['default'].update(db_from_env)
 
 #LOGIN_REDIRECT_URL = '/docmanag/home/'

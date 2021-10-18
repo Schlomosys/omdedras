@@ -26,7 +26,7 @@ AUTH_USER_MODEL = 'docmanag.User'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY =os.environ['SECRET_KEY']
-DEBUG =False
+DEBUG=True
 
 ALLOWED_HOSTS = ['omdedras.herokuapp.com']
 

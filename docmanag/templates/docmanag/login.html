@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>DEDRAS OM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="codedthemes" />
+    <!-- Favicon icon -->
+    {% load static %}
+    <link rel="icon" href="{% static 'docmanag/assets/images/favicon.ico'%}" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="{% static 'docmanag/assets/pages/waves/css/waves.min.css'%}" type="text/css" media="all">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static 'docmanag/assets/css/bootstrap/css/bootstrap.min.css'%}">
+    <!-- waves.css -->
+    <link rel="stylesheet" href=" {% static 'docmanag/assets/pages/waves/css/waves.min.css'%}" type="text/css" media="all">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'docmanag/assets/icon/themify-icons/themify-icons.css'%}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'docmanag/assets/icon/font-awesome/css/font-awesome.min.css'%}">
+    <!-- scrollbar.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'docmanag/assets/css/jquery.mCustomScrollbar.css'%}">
+    <!-- am chart export.css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href=" {% static 'docmanag/assets/css/style.css'%}">
+    <!--
+
+             AJOUT CRUD MODAL
+
+    -->
+
+
+
+
+    <link rel="stylesheet" type="text/css" href=" {% static 'docmanag/assets/css/style.css'%}">
+    <!--
+
+             AJOUT CRUD MODAL
+
+    -->
+    <!-- Appel de la Feuille de style minifiée De La librairie Bootstrap -->
+    <!-- Appel de la Feuille de style minifiée De l'extension Datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+
+    <script src="https://kit.fontawesome.com/5846046699.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body themebg-pattern="theme1">
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="loader-track">
+            <div class="preloader-wrapper">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+
+    <section class="login-block">
+        <!-- Container-fluid starts -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                    {% endif %} {% if next %} {% if user.is_authenticated %}
+                    <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+                    {% else %}
+                    <p>Please login to see this page.</p>
+                    {% endif %} {% endif %}
+
+                    <form class="md-float-material form-material" action="{%url 'docmanag:logine'%}" method="post">
+                        {% csrf_token %} {% if next %}
+                        <input type="hidden" name="next" value="{{ next }}" /> {% endif %}
+                        <div class="text-center">
+                            <img src="{% static 'docmanag/assets/images/favicon.png'%}" alt="logo.png">
+                        </div>
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center">Connexion</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary">
+                                    <input type="email" id="username" name="username" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Addresse e-mail </label>
+                                </div>
+                                <div class="form-group form-primary">
+                                    <input type="password" name="password" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Mot de passe</label>
+                                </div>
+                                <div class="row m-t-25 text-left">
+                                    <div class="col-12">
+                                        <!--
+                                        <div class="checkbox-fade fade-in-primary d-">
+                                            <label>
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                    <span class="text-inverse">Se souvenir de moi</span>
+                                                </label>
+                                        </div>-->
+                                        <div class="forgot-phone text-right f-right">
+                                            <a href="{% url 'docmanag:password_reset'%}" class="text-right f-w-600"> Mot de passe oublié?</a>
+                                        </div>
+                                        <div class="forgot-phone text-left f-left">
+                                            <a href="{%url 'docmanag:register'%}">Inscriver vous ici</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-t-30">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Connexion</button>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- end of form -->
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <!-- Required Jquery -->
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/jquery/jquery.min.js'%} "></script>
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/jquery-ui/jquery-ui.min.js'%} "></script>
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/popper.js/popper.min.js'%} "></script>
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/bootstrap/js/bootstrap.min.js'%} "></script>
+    <script type="text/javascript " src="{% static 'docmanag/assets/pages/widget/excanvas.js'%} "></script>
+    <!-- waves js -->
+    <script src="{% static 'docmanag/assets/pages/waves/js/waves.min.js'%} "></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/jquery-slimscroll/jquery.slimscroll.js'%} "></script>
+    <!-- modernizr js -->
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/modernizr/modernizr.js'%} "></script>
+    <!-- slimscroll js -->
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/SmoothScroll.js'%} "></script>
+    <script src="{% static 'docmanag/assets/js/jquery.mCustomScrollbar.concat.min.js'%} "></script>
+    <!-- Chart js -->
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/chart.js/Chart.js'%} "></script>
+    <!-- amchart js -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js "></script>
+    <script src="{% static 'docmanag/assets/pages/widget/amchart/gauge.js'%} "></script>
+    <script src="{% static 'docmanag/assets/pages/widget/amchart/serial.js'%} "></script>
+    <script src="{% static 'docmanag/assets/pages/widget/amchart/light.js'%} "></script>
+    <script src="{% static 'docmanag/assets/pages/widget/amchart/pie.min.js'%} "></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js "></script>
+    <!-- menu js -->
+    <script src="{% static 'docmanag/assets/js/pcoded.min.js'%} "></script>
+    <script src="{% static 'docmanag/assets/js/vertical-layout.min.js'%} "></script>
+    <!-- custom js -->
+    <script type="text/javascript " src="{% static 'docmanag/assets/pages/dashboard/custom-dashboard.js'%} "></script>
+    <script type="text/javascript " src="{% static 'docmanag/assets/js/script.js '%} "></script>
+</body>
+
+</html>

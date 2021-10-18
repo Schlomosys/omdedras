@@ -25,10 +25,8 @@ AUTH_USER_MODEL = 'docmanag.User'
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&wm@dst##$gj!tw_=*_275^vh$b=%&4q04x#&8zu_ld^rrvbvk'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY =os.environ['SECRET_KEY']
+DEBUG =False
 
 ALLOWED_HOSTS = []
 

@@ -27,7 +27,7 @@ AUTH_USER_MODEL = 'docmanag.User'
 SECRET_KEY =os.environ['SECRET_KEY']
 DEBUG =os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['omdedras.herokuapp.com']
+ALLOWED_HOSTS = ['docmansaas.herokuapp.com']
 
 
 # Application definition

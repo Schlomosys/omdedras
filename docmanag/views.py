@@ -56,6 +56,8 @@ from .managers import *
 
 from threading import Thread, activeCount
 from django.contrib.auth.decorators import login_required
+
+from django.core.files.storage import FileSystemStorage
                  
 
 #utilisation des vues generiques de python
@@ -257,7 +259,7 @@ def Envoiyer(request):
     notify.send(sender=recepteur, recipient=initiateur, verb='Message',description="Une demande d'ordre de mission")
     to_emails = [str(request.user.email)]
     subject = "Demande d'Ordre de Mission"
-    body=""+ initiateur.lastname +  initiateur.firstname + " a envoyé une demande d'ordre de mission. Veuillez verifiez et traiter la Demande sur DEDRAS"
+    body=""+ initiateur.lastname +" " +  initiateur.firstname + " a envoyé une demande d'ordre de mission. Veuillez verifiez et traiter la Demande sur DEDRAS"
     email = EmailMessage(subject, body=body, from_email=settings.EMAIL_HOST_USER, to=to_emails)
     email.send()
     return redirect('docmanag:boitereception')                                                                                              
@@ -270,8 +272,13 @@ def Storeordremission(request):
        dateretour=request.POST['dateretour'] 
        adressemission=request.POST['adressemission']
        transport=request.POST['transport']
+       nomchauffeur=request.POST['nomchauffeur']
+       kilomdepart=request.POST['kilomdepart']
+       kilomarrivee=request.POST['kilomarrivee']
        adressehebergement=request.POST['adressehebergement']
        adresseemploye=request.POST['adresseemploye']
+       nom=request.POST['nom']
+       prenom=request.POST['prenom']
        fichier_an_one=request.FILES['fichier_an_one']
        fichier_an_two=request.FILES['fichier_an_two']
             
@@ -286,11 +293,10 @@ def Storeordremission(request):
                  
             current_user = request.user
     #user_id=current_user.id
-            nom=current_user.lastname
-            prenom=current_user.firstname
+            
             #user_id=current_user.id
             theuser=current_user
-            new_om = Ordremission.objects.create(user=theuser, objetmission=objetmission, datedepart=datedepart, dateretour=dateretour, adressemission=adressemission, transport=transport, adressehebergement=adressehebergement, adresseemploye=adresseemploye, nom=nom, prenom=prenom, fichier_an_one=fichier_an_one, fichier_an_two=fichier_an_two)
+            new_om = Ordremission.objects.create(user=theuser, objetmission=objetmission, datedepart=datedepart, dateretour=dateretour, adressemission=adressemission, transport=transport, adressehebergement=adressehebergement, adresseemploye=adresseemploye, nom=nom, prenom=prenom, nomchauffeur=nomchauffeur,kilomdepart=kilomdepart, kilomarrivee=kilomarrivee, fichier_an_one=fichier_an_one, fichier_an_two=fichier_an_two)
             new_om.save()
             messages.info(request, 'Odre de mission créé avec succes')
             return redirect('docmanag:account')    
@@ -323,7 +329,6 @@ def Storeordremission(request):
     
 
 def Editordremission(request):
-    if request.method == 'POST':
        omi_id=request.POST['omi_id']
        objetmission=request.POST['objetmission']
        datedepart=request.POST['datedepart'] 
@@ -332,8 +337,16 @@ def Editordremission(request):
        transport=request.POST['transport']
        adressehebergement=request.POST['adressehebergement']
        adresseemploye=request.POST['adresseemploye']
-       fichier_an_one=request.FILES.get('fichier_an_one') 
-       fichier_an_two=request.FILES.get('fichier_an_two')  
+       nomchauffeur=request.POST['nomchauffeur']
+       kilomdepart=request.POST['kilomdepart']
+       kilomarrivee=request.POST['kilomarrivee']
+       nom=request.POST['nom']
+       prenom=request.POST['prenom']
+       fichier_an_one=request.FILES['fichier_an_one'] 
+       file_name_one=request.FILES['fichier_an_one'].name
+       fichier_an_two=request.FILES['fichier_an_two']
+       file_name_two=request.FILES['fichier_an_two'].name
+
        
    
    
@@ -347,9 +360,16 @@ def Editordremission(request):
        ordremission.dateretour=dateretour
        ordremission.adressemission=adressemission
        ordremission.transport=transport
+       ordremission.nomchauffeur=nomchauffeur
+       ordremission.kilomdepart=kilomdepart
+       ordremission.kilomarrivee=kilomarrivee
+       ordremission.nom=nom
+       ordremission.prenom=prenom
        ordremission.adressehebergement=adressehebergement
        ordremission.adresseemploye=adresseemploye
-       if request.POST['fichier_an_one']:
+       #ordremission.fichier_an_one=request.FILES.get('fichier_an_one') 
+       #ordremission.fichier_an_two=request.FILES.get('fichier_an_two')
+       '''' if request.POST['fichier_an_one']:
                    
            if fichier_an_one.content_type !='application/pdf':
                messages.info(request, 'Veuillez bien remplir le formulaire')
@@ -364,7 +384,20 @@ def Editordremission(request):
                messages.info(request, 'Veuillez bien remplir le formulaire')
                return redirect('docmanag:account')
            else:    
-               ordremission.fichier_an_two=request.FILES.get('fichier_an_two')   
+               ordremission.fichier_an_two=request.FILES.get('fichier_an_two')'''  
+
+       fs=FileSystemStorage()
+       file_one=fs.save(fichier_an_one.name, fichier_an_one)   
+       fileurl_one=fs.url(file_one)  
+       report_one=file_name_one
+
+       file_two=fs.save(fichier_an_two.name, fichier_an_two)   
+       fileurl_two=fs.url(file_two)  
+       report_two=file_name_two
+
+       ordremission.fichier_an_one=fichier_an_one
+       ordremission.fichier_an_two=fichier_an_two
+       #Ordremission.objects.filter(id=omi_id).update(fichier_an_one=fichier_an_one, fichier_an_two=fichier_an_two)
        ordremission.save()
        messages.info(request, 'Odre de mission modifié avec succes')
        return redirect('docmanag:account')    
@@ -534,8 +567,7 @@ class Pdf(View,):
 def signer(request, om_id):
     om=Ordremission.objects.get(id=om_id)
     user=request.user
-    env=Envoi.objects.get(Ordremission=om)
-    
+        
     data = {
     'today': datetime.date.today(), 
     'objetmission':om.objetmission,
@@ -549,11 +581,13 @@ def signer(request, om_id):
     'prenom': om.prenom,
     'datecreat':om.datecreat,
     'name':om.user.username,
+    'nomchaufe':om.nomchauffeur,
+    'kilomdep':om.kilomdepart,
+    'kilomarr':om.kilomarrivee,
     'user':user
     }
-    env=Envoi.objects.get(Ordremission=om)
-    env.is_signe=True
-    env.save()
+    env=Envoi.objects.filter(ordremission__id=om.id)
+    env.update(is_signe=True)
     #pdf = Render.render_to_file('docmanag/omsigne.html', params)
     pdf = render_to_pdf('docmanag/omsigne.html', data)
     #return HttpResponse(pdf, content_type='application/pdf')

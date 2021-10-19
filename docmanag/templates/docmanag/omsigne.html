@@ -24,70 +24,115 @@
         </th>
         <tbody>
             <td>
-
-
-                <div>
+                <div class="">
                     <!--This popup modal will be opened by the ajax call - Important-->
-
-
-                    <h1 style="font-size: 28px; color: black;" id="">Objet: <span id="objetmissio">{{objetmission}}</span></h1>
+                    <div class="container">
+                        <p style="text-align:center;font-size: 25px; color: black; padding-left: 0;"><span id="">DEDRAS-ONG ORDRE DE MISSION
+                            
+                      </span></p>
+                    </div>
 
                     <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                        Par la présente, l'ONG DEDRAS confie à son collaborateur Monsieur/Madame <span id="nommyom" style="font-weight: bold;">{{nom}}</span> <span id="prenommyom" style="font-weight: bold;">{{prenom}}</span> habitant au <span id="adresseemploy"
-                            style="font-weight: bold;">{{adresseemploye}}</span> et agissant en tant que
-                        <span id="fonctionsalarie" style="font-weight: bold;">{{name}}</span>, la mission de <span id="objetmissiobis" style="font-weight: bold;">{{objetmission}}</span>. Elle aura lieu du <span id="datedepar" style="font-weight: bold;">{{datedepart}}</span>                        au
-                        <span id="dateretou" style="font-weight: bold;">{{dateretour}}</span>.
+                        No ____________/21/DEDRAS/CN/AC
+
+
+
+                    </p>
+                    <h1 id="" style="font-size: 25px; color: black;">Objet:<span id="objetmissio" style="font-size: 25px; color: black;">{{objetmission}}</span></h1>
+
+                    <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                        Le <span style="font-weight: bold;">Coordonateur National</span> de l'Organisation pour le Développement, le Renforcement et l'Auto-promotion des Structures Communautaires <span style="font-weight: bold;">(DEDRAS-ONG), ordonne à:</span>
+
 
 
 
                     </p>
                     <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                        Le déplacement du salarié aura lieu entre son (lieu de travail/lieu de résidence familial) et le lieu de sa mission, situé au <span id="adressemissio" style="font-weight: bold;">{{adressemission}}</span>. </br>
+                        Au(x) Nommé(es) : <span id="nommyom" style="font-weight: bold;">{{nom}}</span></br>
+                        Fonction : <span id="prenommyom" style="font-weight: bold;">{{prenom}}</span></br>
+                        De se rendre à: <span id="adressemissio" style="font-weight: bold;">{{adressemission}}</span></br>
+                        Lieu de provenance: <span id="adresseemploy" style="font-weight: bold;">{{adresseemploye}}</span></br>
+
+
+                        Pour (Objet complet) : <span id="objetmissiobis" style="font-weight: bold;">{{objetmission}}</span></br>
+                        Date de départ : <span id="datedepar" style="font-weight: bold;">{{datedepart}}</span></br>
+                        Date de retour : <span id="dateretou" style="font-weight: bold;">{{dateretour}}</span></br>
+
+                        Date effective de retour : <span id="" style="font-weight: bold;"></span></br>
+
+
+                        Numéro du Véhicule : <span id="transporta" style="font-weight: bold;">{{transport}}</span></br>
+                        Nom du Chauffeur : <span id="nomchaufe" style="font-weight: bold;"></span>{{nomchaufe}}</br>
+                        Compteur (Km) au départ : <span id="kilomdepe" style="font-weight: bold;">{{kilomdep}}</span></br>
+                        Compteur (Km) au retour : <span id="kilomarre" style="font-weight: bold;">{{kilomarr}}</span></br>
+
+
+
+
 
                     </p>
                     <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                        Pour son voyage aller-retour, le salarié utilisera les moyens de transports suivants : <span id="transpor" style="font-weight: bold;">{{transport}}</span></p>
-                    <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                        Pendant sa mission, le salarié résidera au <span id="adressehebergemen" style="font-weight: bold;">{{adressehebergement}}</span>. Pour effectuer les trajets entre son lieu de séjour et le lieu de sa mission, il utilisera (moyens
-                        de transport utilisés):
-                        <span id="transporta" style="font-weight: bold;">{{transport}}</span></p>
+                        Nous prions les autorités administratives et routières de leur faciliter le passage dans l'accomplissement de la mission.
+
+
+
+
                     </p>
-                    <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">Les frais de déplacement seront intégralement remboursés par l’ONG, sous réserve de présentation desdites factures.</p>
-                    <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                        </br>
-                        </br>
-                        </br>Fait à Parakou, le <span id="createda">{{datecreat|date:'d-m-Y'}}</span>,</br>
-                        </br>
-                        </br>
-                    </p>
+                    <div class="container">
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            </br>
+                            </br>
+                            </br>Fait à Parakou, le <span id="createda" style="font-weight: bold;">{{datecreat|date:'d-m-Y'}}</span>,</br>
+                            </br>Le Coordonnateur National <span id="createda" style="font-weight: bold;"></span>,</br>
+                            </br>
+                            </br>
+                            <span id="signatureemployeu"></span>
+
+
+
+                        </p>
+                    </div>
                     <div class="container">
                         <p style="text-align: center;"><span id="signatureemployeu">
                             <img src="C:/Users/Awolou Daniel/Desktop/DJANGO SITES/docmansaas/{{user.signature.url}}" class="" alt="User-Profile-Image" style="height:60px; width:150px;">
                       </span></p>
                     </div>
                     <div class="container">
-                        <p style="text-align: center;"><span id="signatureemployeu">KPETERE Jean
+                        <p style="text-align:center;font-size: 22px; color: black; padding-left: 0;"><span id="">KPETERE Jean
                             
                       </span></p>
                     </div>
+                    <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                        NB: Toute ratures ou surcharges annulent la validité de ce document
+
+
+
+                    </p>
+                    <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                        <span style="font-weight: bold;">Dedras ONG</span>
+                        <span>BP 215 Parakou, République du Bénin</span></br>
+                        <span>Tél: +229 9585 1708/ +229 9737 2972| E-mail: info@dedras.org| www.dedras.org</span></br>
+                        <span>IFU No 6201101673406 | CNSS No 23866</span></br>
 
 
 
 
 
+                    </p>
 
 
 
 
-
-
-
-                    <!--<div style="padding-top: 1.5rem; ">
-                        <button type="button " class="btn btn-outline-info waves-effect ml-auto " data-dismiss="modal ">Valider</button>
-                </div>-->
+                    <!--<div style="padding-top: 1.5rem;">
+                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Valider</button>
+                    </div>-->
 
 
                 </div>
+
+
+
+
             </td>
 
 

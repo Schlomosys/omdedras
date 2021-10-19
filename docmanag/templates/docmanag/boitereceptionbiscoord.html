@@ -12,10 +12,7 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="codedthemes" />
+
     <!-- Favicon icon -->
     {% load static %}
     <link rel="icon" href="{% static 'docmanag/assets/images/favicon.ico'%}" type="image/x-icon">
@@ -1678,45 +1675,95 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Ordre de Mission</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
                     <div class="modal-body">
                         <!--This popup modal will be opened by the ajax call - Important-->
 
 
                         <h1 id="">Objet:<span id="objetmissio"></span></h1>
-
                         <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Par la présente, l'ONG DEDRAS confie à son collaborateur Monsieur/Madame <span id="nommyom" style="font-weight: bold;"></span> <span id="prenommyom" style="font-weight: bold;"></span> habitant au <span id="adresseemploy" style="font-weight: bold;"></span>                            et agissant en tant que
-                            <span id="fonctionsalarie" style="font-weight: bold;"></span>, la mission de <span id="objetmissiobis" style="font-weight: bold;"></span>. Elle aura lieu du <span id="datedepar" style="font-weight: bold;"></span> au <span id="dateretou"
-                                style="font-weight: bold;"></span>.
+                            No ____________/21/DEDRAS/CN/AC
 
 
 
                         </p>
                         <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Le déplacement du salarié aura lieu entre son (lieu de travail/lieu de résidence familial) et le lieu de sa mission, situé au <span id="adressemissio" style="font-weight: bold;"></span>. </br>
+                            Le <span style="font-weight: bold;">Coordonateur National</span> de l'Organisation pour le Développement, le Renforcement et l'Auto-promotion des Structures Communautaires <span style="font-weight: bold;">(DEDRAS-ONG), ordonne à:</span>
 
-                        </p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Pour son voyage aller-retour, le salarié utilisera les moyens de transports suivants : <span id="transpor" style="font-weight: bold;"></span></p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Pendant sa mission, le salarié résidera au <span id="adressehebergemen" style="font-weight: bold;"></span>. Pour effectuer les trajets entre son lieu de séjour et le lieu de sa mission, il utilisera (moyens de transport utilisés):
-                            <span id="transporta" style="font-weight: bold;"></span></p>
-                        </p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">Les frais de déplacement seront intégralement remboursés par l’ONG, sous réserve de présentation desdites factures.</p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            </br>
-                            </br>
-                            </br>Fait à Parakou, le <span id="createda" style="font-weight: bold;"></span>,</br>
-                            </br>
-                            </br>
-                            <span id="signatureemployeu"></span>
 
 
 
                         </p>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            Au(x) Nommé(es) : <span id="nommyom" style="font-weight: bold;"></span></br>
+                            Fonction : <span id="prenommyom" style="font-weight: bold;"></span></br>
+                            De se rendre à: <span id="adressemissio" style="font-weight: bold;"></span></br>
+                            Lieu de provenance: <span id="adresseemploy" style="font-weight: bold;"></span></br>
+
+
+                            Pour (Objet complet) : <span id="objetmissiobis" style="font-weight: bold;"></span></br>
+                            Date de départ : <span id="datedepar" style="font-weight: bold;"></span></br>
+                            Date de retour : <span id="dateretou" style="font-weight: bold;"></span></br>
+
+                            Date effective de retour : <span id="" style="font-weight: bold;"></span></br>
+
+
+                            Numéro du Véhicule : <span id="transporta" style="font-weight: bold;"></span></br>
+                            Nom du Chauffeur : <span id="nomchaufe" style="font-weight: bold;"></span></br>
+                            Compteur (Km) au départ : <span id="kilomdepe" style="font-weight: bold;"></span></br>
+                            Compteur (Km) au retour : <span id="kilomarre" style="font-weight: bold;"></span></br>
+
+
+
+
+
+                        </p>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            Nous prions les autorités administratives et routières de leur faciliter le passage dans l'accomplissement de la mission.
+
+
+
+
+                        </p>
+                        <div class="container">
+                            <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                                </br>
+                                </br>
+                                </br>Fait à Parakou, le <span id="createda" style="font-weight: bold;"></span>,</br>
+                                </br>Le Coordonnateur National <span id="createda" style="font-weight: bold;"></span>,</br>
+                                </br>
+                                </br>
+                                <span id="signatureemployeu"></span>
+
+
+
+                            </p>
+                        </div>
+                        <div class="container">
+                            <p style="text-align: center;font-size: 22px; color: black; padding-left: 0; text-align:justify;"><span id="">KPETERE Jean
+                                
+                          </span></p>
+                        </div>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            NB: Toute ratures ou surcharges annulent la validité de ce document
+
+
+
+                        </p>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            <span style="font-weight: bold;">Dedras ONG</span>
+                            <span>BP 215 Parakou, République du Bénin</span></br>
+                            <span>Tél: +229 9585 1708/ +229 9737 2972| E-mail: info@dedras.org| www.dedras.org</span></br>
+                            <span>IFU No 6201101673406 | CNSS No 23866</span></br>
+
+
+
+
+
+                        </p>
+
 
 
 
@@ -1931,9 +1978,11 @@
             };
         </script>
 
+
+
         <!--  Ajax to visualize-->
 
-        <script type="text/javascript ">
+        <script type="text/javascript">
             // For receiving
 
 
@@ -1959,7 +2008,7 @@
 
                         success: function(data) {
                             console.log(data);
-                            $('.show_om').trigger("reset ");
+                            $('.show_om').trigger("reset");
                             console.log(data[0].objetmission);
 
                             openModal(data);
@@ -1983,11 +2032,86 @@
                 $('#adressemissio').text(myom[0].adressemission);
                 $('#transpor').text(myom[0].transport);
                 $('#transporta').text(myom[0].transport);
+                $('#nomchaufe').text(myom[0].nomchauffeur);
+                $('#kilomdepe').text(myom[0].kilomdepart);
+                $('#kilomarre').text(myom[0].kilomarrivee);
                 $('#adressehebergemen').text(myom[0].adressehebergement);
                 $('#adresseemploy').text(myom[0].adresseemploye);
                 $('#signatureemployeu').text(myom[0].signatureemployeur);
                 $('#createda').text(myom[0].datecreat);
                 $('#modalQuickView').modal('show');
+            };
+        </script>
+
+        <!-- JavaSript pour la suppression d'un Om-->
+
+        <script type="text/javascript">
+            // For receiving
+
+
+
+
+
+
+            //For sending
+            $(function() {
+                // $('.myform').on('submit', function(event) {
+                $('.delete').on('click', function(event) {
+
+                    $("#omid").val($(this).data('id'));
+                    $('#deleteEmployeeModal').modal('show');
+                });
+            });
+        </script>
+        <!--  Ajax to modify-->
+
+        <script type="text/javascript">
+            // For receiving
+            //For sending
+            $(function() {
+                // $('.myform').on('submit', function(event) {
+                $('.edit_show_om').on('click', function(event) {
+                    event.preventDefault();
+                    let om_id = $(this).attr('id');
+                    var idis = $('.edit_om_id_submit').val();
+
+                    $.ajax({
+                        url: '/docmanag/visualiser/',
+                        type: 'POST',
+                        data: {
+                            id: om_id,
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        },
+
+                        success: function(data) {
+                            console.log(data);
+                            $('.edit_show_om').trigger("reset");
+                            console.log(data[0].id);
+
+                            openeditModal(data);
+                        },
+                        error: function() {
+                            console.log('something went wrong here');
+                        },
+                    });
+                });
+            });
+
+            function openeditModal(myom) {
+                $('#omi_id').val(myom[0].id);
+                $('#objetmission').val(myom[0].objetmission);
+                $('#datedepart').val(myom[0].datedepart);
+                $('#dateretour').val(myom[0].dateretour);
+                $('#adressemission').val(myom[0].adressemission);
+                $('#transport').val(myom[0].transport);
+                $('#noms').val(myom[0].nom);
+                $('#prenoms').val(myom[0].prenom);
+                $('#nomchauf').val(myom[0].nomchauffeur);
+                $('#kilomdep').val(myom[0].kilomdepart);
+                $('#kilomarr').val(myom[0].kilomarrivee);
+                $('#adressehebergement').val(myom[0].adressehebergement);
+                $('#adresseemploye').val(myom[0].adresseemploye);
+                $('#editOmModal').modal('show');
             };
         </script>
 

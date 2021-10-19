@@ -12,10 +12,7 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="codedthemes" />
+
     <!-- Favicon icon -->
     {% load static %}
     <link rel="icon" href="{% static 'docmanag/assets/images/favicon.ico'%}" type="image/x-icon">
@@ -1503,13 +1500,15 @@
         <!-- Warning Section Ends -->
 
         <!-- Edit Modal HTML -->
+
+
         <div id="addOrdreMission" class="modal fade">
             <!-- Extension jquery -->
 
             <!-- Noyau JavaScript de Bootstrap -->
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="{% url 'docmanag:storeordremission'%}" method="post " enctype="multipart/form-data">
+                    <form action="{% url 'docmanag:storeordremission'%}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="modal-header">
                             <h4 class="modal-title">Demande d'Ordre de Mission</h4>
@@ -1518,42 +1517,63 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Objet de la mission</label>
-                                <input type="text " name="objetmission" class="form-control" required>
+                                <input type="text" name="objetmission" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nom(s) Prénom(s)</label>
+                                <input type="text" name="nom" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Fonction</label>
+                                <input type="text" name="prenom" class="form-control" required>
                             </div>
                             <!--<div class="form-group ">
-                        <label>Email</label>
-                        <input type="email " class="form-control " required>
-                    </div>-->
-                            <div class="form-group">
-                                <label>date de départ</label>
-                                <div class="datepicker">
-                                    <input type="date" id="date" name="datedepart" value="">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>date de retour</label>
-                                <div class="datepicker">
-                                    <input type="date" id="date " name="dateretour " value=" ">
-                                    <span></span>
-                                </div>
-                            </div>
+                            <label>Email</label>
+                            <input type="email " class="form-control " required>
+                        </div>-->
                             <div class="form-group">
                                 <label>Lieu</label>
                                 <input type="text" class="form-control" name="adressemission" required>
 
                             </div>
                             <div class="form-group">
-                                <label>Moyen de transport</label>
-                                <input type="text " class="form-control " name="transport" required>
+                                <label>Date de départ</label>
+                                <div class="datepicker">
+                                    <input type="date" id="date" name="datedepart" value=" ">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Date de retour</label>
+                                <div class="datepicker">
+                                    <input type="date" id="date" name="dateretour" value=" ">
+                                    <span></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>No du Véhicule</label>
+                                <input type="text" class="form-control" name="transport" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nom du Chauffeur</label>
+                                <input type="text" class="form-control" name="nomchauffeur" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Compteur au départ</label>
+                                <input type="number" class="form-control" name="kilomdepart" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Compteur à l'arrivée</label>
+                                <input type="number" class="form-control" name="kilomarrivee" required>
                             </div>
                             <div class="form-group">
                                 <label>Hébergement</label>
-                                <input type="text" class="form-control " name="adressehebergement" required>
+                                <input type="text" class="form-control" name="adressehebergement" required>
                             </div>
                             <div class="form-group">
                                 <label>Adresse de l'employé</label>
-                                <input type="text " class="form-control" name="adresseemploye" required>
+                                <input type="text" class="form-control" name="adresseemploye" required>
                             </div>
                             <div class="form-group">
                                 <label>Fichier Attach. 1</label>
@@ -1567,15 +1587,15 @@
 
                         </div>
                         <!--
-                    <div class="modal-footer ">
-                        <input type="button " class="btn btn-default " data-dismiss="modal " value="Cancel ">
-                        <input type="submit " class="btn btn-success " value="Add ">
-                    </div>-->
+                        <div class="modal-footer ">
+                            <input type="button " class="btn btn-default " data-dismiss="modal " value="Cancel ">
+                            <input type="submit " class="btn btn-success " value="Add ">
+                        </div>-->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button class="submit btn btn-block btn-primary" type="submit">
-                                    
-                                    <span class="btn-txt">Effectuer</span></button>
+                                        
+                                        <span class="btn-txt">Effectuer</span></button>
                             </div>
                         </div>
                     </form>
@@ -1585,6 +1605,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <!-- Edit Modal HTML -->
         <div id="editOmModal" class="modal fade">
             <div class="modal-dialog">
@@ -1699,45 +1722,95 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Ordre de Mission</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
                     <div class="modal-body">
                         <!--This popup modal will be opened by the ajax call - Important-->
 
 
                         <h1 id="">Objet:<span id="objetmissio"></span></h1>
-
                         <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Par la présente, l'ONG DEDRAS confie à son collaborateur Monsieur/Madame <span id="nommyom" style="font-weight: bold;"></span> <span id="prenommyom" style="font-weight: bold;"></span> habitant au <span id="adresseemploy" style="font-weight: bold;"></span>                            et agissant en tant que
-                            <span id="fonctionsalarie" style="font-weight: bold;"></span>, la mission de <span id="objetmissiobis" style="font-weight: bold;"></span>. Elle aura lieu du <span id="datedepar" style="font-weight: bold;"></span> au <span id="dateretou"
-                                style="font-weight: bold;"></span>.
+                            No ____________/21/DEDRAS/CN/AC
 
 
 
                         </p>
                         <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Le déplacement du salarié aura lieu entre son (lieu de travail/lieu de résidence familial) et le lieu de sa mission, situé au <span id="adressemissio" style="font-weight: bold;"></span>. </br>
+                            Le <span style="font-weight: bold;">Coordonateur National</span> de l'Organisation pour le Développement, le Renforcement et l'Auto-promotion des Structures Communautaires <span style="font-weight: bold;">(DEDRAS-ONG), ordonne à:</span>
 
-                        </p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Pour son voyage aller-retour, le salarié utilisera les moyens de transports suivants : <span id="transpor" style="font-weight: bold;"></span></p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            Pendant sa mission, le salarié résidera au <span id="adressehebergemen" style="font-weight: bold;"></span>. Pour effectuer les trajets entre son lieu de séjour et le lieu de sa mission, il utilisera (moyens de transport utilisés):
-                            <span id="transporta" style="font-weight: bold;"></span></p>
-                        </p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">Les frais de déplacement seront intégralement remboursés par l’ONG, sous réserve de présentation desdites factures.</p>
-                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
-                            </br>
-                            </br>
-                            </br>Fait à Parakou, le <span id="createda" style="font-weight: bold;"></span>,</br>
-                            </br>
-                            </br>
-                            <span id="signatureemployeu"></span>
 
 
 
                         </p>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            Au(x) Nommé(es) : <span id="nommyom" style="font-weight: bold;"></span></br>
+                            Fonction : <span id="prenommyom" style="font-weight: bold;"></span></br>
+                            De se rendre à: <span id="adressemissio" style="font-weight: bold;"></span></br>
+                            Lieu de provenance: <span id="adresseemploy" style="font-weight: bold;"></span></br>
+
+
+                            Pour (Objet complet) : <span id="objetmissiobis" style="font-weight: bold;"></span></br>
+                            Date de départ : <span id="datedepar" style="font-weight: bold;"></span></br>
+                            Date de retour : <span id="dateretou" style="font-weight: bold;"></span></br>
+
+                            Date effective de retour : <span id="" style="font-weight: bold;"></span></br>
+
+
+                            Numéro du Véhicule : <span id="transporta" style="font-weight: bold;"></span></br>
+                            Nom du Chauffeur : <span id="nomchaufe" style="font-weight: bold;"></span></br>
+                            Compteur (Km) au départ : <span id="kilomdepe" style="font-weight: bold;"></span></br>
+                            Compteur (Km) au retour : <span id="kilomarre" style="font-weight: bold;"></span></br>
+
+
+
+
+
+                        </p>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            Nous prions les autorités administratives et routières de leur faciliter le passage dans l'accomplissement de la mission.
+
+
+
+
+                        </p>
+                        <div class="container">
+                            <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                                </br>
+                                </br>
+                                </br>Fait à Parakou, le <span id="createda" style="font-weight: bold;"></span>,</br>
+                                </br>Le Coordonnateur National <span id="createda" style="font-weight: bold;"></span>,</br>
+                                </br>
+                                </br>
+                                <span id="signatureemployeu"></span>
+
+
+
+                            </p>
+                        </div>
+                        <div class="container">
+                            <p style="text-align: center;font-size: 22px; color: black; padding-left: 0; text-align:justify;"><span id="">KPETERE Jean
+                                
+                          </span></p>
+                        </div>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            NB: Toute ratures ou surcharges annulent la validité de ce document
+
+
+
+                        </p>
+                        <p style="font-size: 22px; color: black; padding-left: 0; text-align:justify; padding-top: 15px;">
+                            <span style="font-weight: bold;">Dedras ONG</span>
+                            <span>BP 215 Parakou, République du Bénin</span></br>
+                            <span>Tél: +229 9585 1708/ +229 9737 2972| E-mail: info@dedras.org| www.dedras.org</span></br>
+                            <span>IFU No 6201101673406 | CNSS No 23866</span></br>
+
+
+
+
+
+                        </p>
+
 
 
 
@@ -1956,9 +2029,10 @@
             };
         </script>
 
+
         <!--  Ajax to visualize-->
 
-        <script type="text/javascript ">
+        <script type="text/javascript">
             // For receiving
 
 
@@ -1984,7 +2058,7 @@
 
                         success: function(data) {
                             console.log(data);
-                            $('.show_om').trigger("reset ");
+                            $('.show_om').trigger("reset");
                             console.log(data[0].objetmission);
 
                             openModal(data);
@@ -2008,11 +2082,86 @@
                 $('#adressemissio').text(myom[0].adressemission);
                 $('#transpor').text(myom[0].transport);
                 $('#transporta').text(myom[0].transport);
+                $('#nomchaufe').text(myom[0].nomchauffeur);
+                $('#kilomdepe').text(myom[0].kilomdepart);
+                $('#kilomarre').text(myom[0].kilomarrivee);
                 $('#adressehebergemen').text(myom[0].adressehebergement);
                 $('#adresseemploy').text(myom[0].adresseemploye);
                 $('#signatureemployeu').text(myom[0].signatureemployeur);
                 $('#createda').text(myom[0].datecreat);
                 $('#modalQuickView').modal('show');
+            };
+        </script>
+
+        <!-- JavaSript pour la suppression d'un Om-->
+
+        <script type="text/javascript">
+            // For receiving
+
+
+
+
+
+
+            //For sending
+            $(function() {
+                // $('.myform').on('submit', function(event) {
+                $('.delete').on('click', function(event) {
+
+                    $("#omid").val($(this).data('id'));
+                    $('#deleteEmployeeModal').modal('show');
+                });
+            });
+        </script>
+        <!--  Ajax to modify-->
+
+        <script type="text/javascript">
+            // For receiving
+            //For sending
+            $(function() {
+                // $('.myform').on('submit', function(event) {
+                $('.edit_show_om').on('click', function(event) {
+                    event.preventDefault();
+                    let om_id = $(this).attr('id');
+                    var idis = $('.edit_om_id_submit').val();
+
+                    $.ajax({
+                        url: '/docmanag/visualiser/',
+                        type: 'POST',
+                        data: {
+                            id: om_id,
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        },
+
+                        success: function(data) {
+                            console.log(data);
+                            $('.edit_show_om').trigger("reset");
+                            console.log(data[0].id);
+
+                            openeditModal(data);
+                        },
+                        error: function() {
+                            console.log('something went wrong here');
+                        },
+                    });
+                });
+            });
+
+            function openeditModal(myom) {
+                $('#omi_id').val(myom[0].id);
+                $('#objetmission').val(myom[0].objetmission);
+                $('#datedepart').val(myom[0].datedepart);
+                $('#dateretour').val(myom[0].dateretour);
+                $('#adressemission').val(myom[0].adressemission);
+                $('#transport').val(myom[0].transport);
+                $('#noms').val(myom[0].nom);
+                $('#prenoms').val(myom[0].prenom);
+                $('#nomchauf').val(myom[0].nomchauffeur);
+                $('#kilomdep').val(myom[0].kilomdepart);
+                $('#kilomarr').val(myom[0].kilomarrivee);
+                $('#adressehebergement').val(myom[0].adressehebergement);
+                $('#adresseemploye').val(myom[0].adresseemploye);
+                $('#editOmModal').modal('show');
             };
         </script>
 
@@ -2053,6 +2202,190 @@
 
 </html>
 
+
+
+
+//For sending $(function() { // $('.myform').on('submit', function(event) { $('.delete').on('click', function(event) { $("#omid").val($(this).data('id')); $('#deleteEmployeeModal').modal('show'); }); });
+</script>
+<!--  Ajax to modify-->
+
+<script type="text/javascript">
+    // For receiving
+    //For sending
+    $(function() {
+        // $('.myform').on('submit', function(event) {
+        $('.edit_show_om').on('click', function(event) {
+            event.preventDefault();
+            let om_id = $(this).attr('id');
+            var idis = $('.edit_om_id_submit').val();
+
+            $.ajax({
+                url: '/docmanag/visualiser/',
+                type: 'POST',
+                data: {
+                    id: om_id,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+
+                success: function(data) {
+                    console.log(data);
+                    $('.edit_show_om').trigger("reset");
+                    console.log(data[0].id);
+
+                    openeditModal(data);
+                },
+                error: function() {
+                    console.log('something went wrong here');
+                },
+            });
+        });
+    });
+
+    function openeditModal(myom) {
+        $('#omi_id').val(myom[0].id);
+        $('#objetmission').val(myom[0].objetmission);
+        $('#datedepart').val(myom[0].datedepart);
+        $('#dateretour').val(myom[0].dateretour);
+        $('#adressemission').val(myom[0].adressemission);
+        $('#transport').val(myom[0].transport);
+        $('#noms').val(myom[0].nom);
+        $('#prenoms').val(myom[0].prenom);
+        $('#nomchauf').val(myom[0].nomchauffeur);
+        $('#kilomdep').val(myom[0].kilomdepart);
+        $('#kilomarr').val(myom[0].kilomarrivee);
+        $('#adressehebergement').val(myom[0].adressehebergement);
+        $('#adresseemploye').val(myom[0].adresseemploye);
+        $('#editOmModal').modal('show');
+    };
+</script>
+
+
+
+
+<!-- Required Jquery -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/jquery/jquery.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/jquery-ui/jquery-ui.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/popper.js/popper.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/bootstrap/js/bootstrap.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/pages/widget/excanvas.js'%} "></script>
+<!-- waves js -->
+<script src="{% static 'docmanag/assets/pages/waves/js/waves.min.js'%} "></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/jquery-slimscroll/jquery.slimscroll.js'%} "></script>
+<!-- modernizr js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/modernizr/modernizr.js'%} "></script>
+<!-- slimscroll js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/SmoothScroll.js'%} "></script>
+<script src="{% static 'docmanag/assets/js/jquery.mCustomScrollbar.concat.min.js'%} "></script>
+<!-- Chart js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/chart.js/Chart.js'%} "></script>
+<!-- amchart js -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/gauge.js'%} "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/serial.js'%} "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/light.js'%} "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/pie.min.js'%} "></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js "></script>
+<!-- menu js -->
+<script src="{% static 'docmanag/assets/js/pcoded.min.js'%} "></script>
+<script src="{% static 'docmanag/assets/js/vertical-layout.min.js'%} "></script>
+<!-- custom js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/pages/dashboard/custom-dashboard.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/script.js '%} "></script>
+</body>
+
 </html>
+
+
+
+
+//For sending $(function() { // $('.myform').on('submit', function(event) { $('.delete').on('click', function(event) { $("#omid").val($(this).data('id')); $('#deleteEmployeeModal').modal('show'); }); });
+</script>
+<!--  Ajax to modify-->
+
+<script type="text/javascript">
+    // For receiving
+    //For sending
+    $(function() {
+        // $('.myform').on('submit', function(event) {
+        $('.edit_show_om').on('click', function(event) {
+            event.preventDefault();
+            let om_id = $(this).attr('id');
+            var idis = $('.edit_om_id_submit').val();
+
+            $.ajax({
+                url: '/docmanag/visualiser/',
+                type: 'POST',
+                data: {
+                    id: om_id,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+
+                success: function(data) {
+                    console.log(data);
+                    $('.edit_show_om').trigger("reset");
+                    console.log(data[0].id);
+
+                    openeditModal(data);
+                },
+                error: function() {
+                    console.log('something went wrong here');
+                },
+            });
+        });
+    });
+
+    function openeditModal(myom) {
+        $('#omi_id').val(myom[0].id);
+        $('#objetmission').val(myom[0].objetmission);
+        $('#datedepart').val(myom[0].datedepart);
+        $('#dateretour').val(myom[0].dateretour);
+        $('#adressemission').val(myom[0].adressemission);
+        $('#transport').val(myom[0].transport);
+        $('#noms').val(myom[0].nom);
+        $('#prenoms').val(myom[0].prenom);
+        $('#nomchauf').val(myom[0].nomchauffeur);
+        $('#kilomdep').val(myom[0].kilomdepart);
+        $('#kilomarr').val(myom[0].kilomarrivee);
+        $('#adressehebergement').val(myom[0].adressehebergement);
+        $('#adresseemploye').val(myom[0].adresseemploye);
+        $('#editOmModal').modal('show');
+    };
+</script>
+
+
+
+
+<!-- Required Jquery -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/jquery/jquery.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/jquery-ui/jquery-ui.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/popper.js/popper.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/bootstrap/js/bootstrap.min.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/pages/widget/excanvas.js'%} "></script>
+<!-- waves js -->
+<script src="{% static 'docmanag/assets/pages/waves/js/waves.min.js'%} "></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/jquery-slimscroll/jquery.slimscroll.js'%} "></script>
+<!-- modernizr js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/modernizr/modernizr.js'%} "></script>
+<!-- slimscroll js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/SmoothScroll.js'%} "></script>
+<script src="{% static 'docmanag/assets/js/jquery.mCustomScrollbar.concat.min.js'%} "></script>
+<!-- Chart js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/js/chart.js/Chart.js'%} "></script>
+<!-- amchart js -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/gauge.js'%} "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/serial.js'%} "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/light.js'%} "></script>
+<script src="{% static 'docmanag/assets/pages/widget/amchart/pie.min.js'%} "></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js "></script>
+<!-- menu js -->
+<script src="{% static 'docmanag/assets/js/pcoded.min.js'%} "></script>
+<script src="{% static 'docmanag/assets/js/vertical-layout.min.js'%} "></script>
+<!-- custom js -->
+<script type="text/javascript " src="{% static 'docmanag/assets/pages/dashboard/custom-dashboard.js'%} "></script>
+<script type="text/javascript " src="{% static 'docmanag/assets/js/script.js '%} "></script>
+</body>
 
 </html>

@@ -488,12 +488,12 @@ def signature(request):
         #return JsonResponse({'myom':myom})
         coord.save()
         messages.info(request, 'Signature téléchargée avec succès')
-        return redirect('docmanag:accountcoord')  
+        return redirect('docmanag:boitereceptioncn')  
         #return HttpResponse(myom)  
        
     else:
         messages.info(request, " OOps!! Une erreur s'est produite")
-        return redirect('docmanag:accountcoord')    
+        return redirect('docmanag:boitereceptioncn')    
 
 class Render:
     

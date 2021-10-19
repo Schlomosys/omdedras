@@ -4,7 +4,6 @@ asgiref==3.4.1
 astroid==2.5.1
 billiard==3.6.4.0
 Brotli==1.0.9
-celery==5.1.2
 cffi==1.14.6
 click==7.1.2
 click-didyoumean==0.0.3

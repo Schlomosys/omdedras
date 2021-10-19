@@ -25,12 +25,15 @@ AUTH_USER_MODEL = 'docmanag.User'
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&wm@dst##$gj!tw_=*_275^vh$b=%&4q04x#&8zu_ld^rrvbvk'
+#SECRET_KEY = 'django-insecure-&wm@dst##$gj!tw_=*_275^vh$b=%&4q04x#&8zu_ld^rrvbvk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+SECRET_KEY =os.environ['SECRET_KEY']
+DEBUG =os.environ['DEBUG']
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['docmansaas.herokuapp.com']
 
 
 # Application definition
@@ -56,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'docmansaas.urls'
@@ -130,8 +134,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = '/static/'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+    # Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+        os.path.join(PROJECT_ROOT, 'static'),
+    )
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -146,4 +159,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dafc.dedras@gmail.com'
 EMAIL_HOST_PASSWORD = 'gsadbllkgzxsckkf'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #LOGIN_REDIRECT_URL = '/docmanag/home/'
+import dj_database_url
+
+# ...
+if os.environ.get('ENV') == 'PRODUCTION':
+    # ...
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)

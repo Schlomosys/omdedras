@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT='https://docmansaas.herokuapp.com/media/'#os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'docmanag.User'
 
